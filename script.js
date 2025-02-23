@@ -1,20 +1,21 @@
 const content = document.getElementById("content");
 const filterButtons = document.querySelectorAll(".filter-btn");
 const themeToggle = document.getElementById("theme-toggle");
+const loginPanel = document.getElementById("login-panel");
 const adminPanel = document.getElementById("admin-panel");
 const adminBtn = document.getElementById("admin-btn");
 
 // لیست لینک‌ها
 const links = [
 
-    { url: "https://gifcandy.net/wp-content/uploads/2024/06/gifcandy-4.webp", type: "gif" },
+    { url: "https://gifcandy.net/wp-content/uploads/2019/01/1-4.gif", type: "gif" }
 ];
 
 // نمایش لینک‌ها در صفحه
-function displayLinks(filter = "all") {
+function displayLinks(filter) {
     content.innerHTML = "";
     links.forEach(link => {
-        if (filter === "all" || link.type === filter) {
+        if (link.type === filter) {
             const item = document.createElement("div");
             item.classList.add("item");
 
@@ -22,8 +23,6 @@ function displayLinks(filter = "all") {
                 item.innerHTML = `<img src="${link.url}" width="200px">`;
             } else if (link.type === "movies") {
                 item.innerHTML = `<video src="${link.url}" width="200px" controls></video>`;
-            } else {
-                item.innerHTML = `<a href="${link.url}" target="_blank">📄 باز کردن سند</a>`;
             }
 
             content.appendChild(item);
@@ -44,12 +43,19 @@ themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-theme");
 });
 
-// مدیریت نمایش پنل ادمین
-function toggleAdmin() {
-    if (adminPanel.style.display === "none" || adminPanel.style.display === "") {
+// نمایش فرم ورود به مدیریت
+function showLogin() {
+    loginPanel.style.display = "block";
+}
+
+// بررسی رمز ورود
+function checkPassword() {
+    const password = document.getElementById("passwordInput").value;
+    if (password === "13851385mnjlltuq") {  // رمز ورود
+        loginPanel.style.display = "none";
         adminPanel.style.display = "block";
     } else {
-        adminPanel.style.display = "none";
+        alert("رمز اشتباه است!");
     }
 }
 
@@ -60,10 +66,10 @@ function addNewLink() {
 
     if (url) {
         links.push({ url, type });
-        displayLinks("all");
+        displayLinks(type);
         document.getElementById("urlInput").value = "";
     }
 }
 
 // نمایش لینک‌ها در ابتدا
-displayLinks();
+displayLinks("images");
