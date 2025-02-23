@@ -5,10 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChinaHub</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <h1>ChinaHub</h1>
-    <div class="gallery" id="gallery"></div>
-    <script src="script.js"></script>
+    <header>
+        <h1>ChinaHub</h1>
+        <button id="theme-toggle">🌙</button>
+    </header>
+    <nav>
+        <button class="filter-btn" data-category="all">All</button>
+        <button class="filter-btn" data-category="images">Images</button>
+        <button class="filter-btn" data-category="gif">GIF</button>
+        <button class="filter-btn" data-category="movies">Movies</button>
+        <button class="filter-btn" data-category="docs">Docs</button>
+    </nav>
+    <main id="content"></main>
 </body>
 </html>
