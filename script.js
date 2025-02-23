@@ -7,10 +7,9 @@ themeToggle.addEventListener("click", () => {
 });
 
 const links = [
-    { url: "https://example.com/image1.jpg", type: "images" },
-    { url: "https://example.com/image2.gif", type: "gif" },
-    { url: "https://example.com/movie.mp4", type: "movies" },
-    { url: "https://example.com/document.pdf", type: "docs" }
+
+    { url: "https://gifcandy.net/wp-content/uploads/2024/06/gifcandy-4.webp", type: "gif" },
+    
 ];
 
 function loadContent(category) {
