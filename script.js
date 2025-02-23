@@ -3,7 +3,8 @@ const links = [
 
 	"https://gifcandy.net/wp-content/uploads/2025/01/gifcandy-5.webp",
 	"https://gifcandy.net/wp-content/uploads/2021/04/gifcandy-23.gif",
-	"https://gifcandy.net/wp-content/uploads/2016/04/gifcandy-squirt-66.gif"
+	"https://gifcandy.net/wp-content/uploads/2016/04/gifcandy-squirt-66.gif",
+	"https://gifcandy.net/wp-content/uploads/2020/02/i-promise.gif"
 
 ];
 
