@@ -1,29 +1,38 @@
+const content = document.getElementById("content");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const themeToggle = document.getElementById("theme-toggle");
+
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+});
+
 const links = [
-
-
-	"https://gifcandy.net/wp-content/uploads/2025/01/gifcandy-5.webp",
-	"https://gifcandy.net/wp-content/uploads/2021/04/gifcandy-23.gif",
-	"https://gifcandy.net/wp-content/uploads/2016/04/gifcandy-squirt-66.gif",
-	"https://gifcandy.net/wp-content/uploads/2020/02/i-promise.gif"
-
+    { url: "https://example.com/image1.jpg", type: "images" },
+    { url: "https://example.com/image2.gif", type: "gif" },
+    { url: "https://example.com/movie.mp4", type: "movies" },
+    { url: "https://example.com/document.pdf", type: "docs" }
 ];
 
-const gallery = document.getElementById("gallery");
-
-links.forEach(link => {
-    let newElement = document.createElement("div");
-
-    if (link.endsWith(".mp4")) {
-        newElement.innerHTML = `<video src="${link}" controls></video>`;
-    } else {
-        newElement.innerHTML = `<img src="${link}" alt="Uploaded">`;
-    }
-
-    // اضافه کردن قابلیت کلیک روی محتوا برای باز شدن در صفحه جدید
-    newElement.addEventListener("click", function() {
-        window.open(link, "_blank");
+function loadContent(category) {
+    content.innerHTML = "";
+    links.filter(link => category === "all" || link.type === category).forEach(link => {
+        const item = document.createElement("div");
+        item.classList.add("content-item");
+        if (link.type === "images" || link.type === "gif") {
+            item.innerHTML = `<img src="${link.url}" alt="content" width="200">`;
+        } else if (link.type === "movies") {
+            item.innerHTML = `<video src="${link.url}" controls width="200"></video>`;
+        } else {
+            item.innerHTML = `<a href="${link.url}" target="_blank">Open Document</a>`;
+        }
+        content.appendChild(item);
     });
+}
 
-    newElement.style.cursor = "pointer"; // نشانگر ماوس تغییر کند
-    gallery.appendChild(newElement);
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        loadContent(button.dataset.category);
+    });
 });
+
+loadContent("all");
