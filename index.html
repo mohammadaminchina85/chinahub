@@ -14,14 +14,19 @@
     </header>
 
     <nav>
-        <button class="filter-btn" data-category="all">All</button>
         <button class="filter-btn" data-category="images">Images</button>
         <button class="filter-btn" data-category="gif">GIF</button>
         <button class="filter-btn" data-category="movies">Movies</button>
-        <button class="filter-btn" data-category="docs">Docs</button>
     </nav>
 
     <main id="content"></main>
+
+    <!-- فرم ورود به پنل مدیریت -->
+    <div id="login-panel">
+        <h2>🔑 ورود مدیر</h2>
+        <input type="password" id="passwordInput" placeholder="رمز را وارد کنید">
+        <button onclick="checkPassword()">ورود</button>
+    </div>
 
     <!-- پنل مدیریت برای افزودن لینک جدید -->
     <div id="admin-panel">
@@ -31,11 +36,10 @@
             <option value="images">تصویر</option>
             <option value="gif">گیف</option>
             <option value="movies">فیلم</option>
-            <option value="docs">سند</option>
         </select>
         <button onclick="addNewLink()">➕ افزودن</button>
     </div>
 
-    <button id="admin-btn" onclick="toggleAdmin()">⚙️ مدیریت</button>
+    <button id="admin-btn" onclick="showLogin()">⚙️ مدیریت</button>
 </body>
 </html>
