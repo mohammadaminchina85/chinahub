@@ -3,8 +3,7 @@ const links = [
 
 	"https://gifcandy.net/wp-content/uploads/2025/01/gifcandy-5.webp",
 	"https://gifcandy.net/wp-content/uploads/2021/04/gifcandy-23.gif",
-	"https://gifcandy.net/wp-content/uploads/2016/04/gifcandy-squirt-66.gif",
-	"https://www.xvideos.com/video.ueecdav7233/my_little_stepsister_tricked_me_into_fucking_her_during_twister_-_exxxtra_small"
+	"https://gifcandy.net/wp-content/uploads/2016/04/gifcandy-squirt-66.gif"
 
 ];
 
