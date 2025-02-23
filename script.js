@@ -6,10 +6,8 @@ const adminBtn = document.getElementById("admin-btn");
 
 // لیست لینک‌ها
 const links = [
-    { url: "https://example.com/image1.jpg", type: "images" },
-    { url: "https://example.com/video.mp4", type: "movies" },
-    { url: "https://example.com/doc.pdf", type: "docs" },
-    { url: "https://gifcandy.net/wp-content/uploads/2024/06/gifcandy-4.webp", type: "gif" }
+
+    { url: "https://gifcandy.net/wp-content/uploads/2024/06/gifcandy-4.webp", type: "gif" },
 ];
 
 // نمایش لینک‌ها در صفحه
