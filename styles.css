@@ -55,7 +55,7 @@ nav {
     transform: scale(1.05);
 }
 
-#admin-panel {
+#login-panel, #admin-panel {
     display: none;
     position: fixed;
     bottom: 20px;
