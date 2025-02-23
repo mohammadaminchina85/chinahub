@@ -12,6 +12,7 @@
         <h1>ChinaHub</h1>
         <button id="theme-toggle">🌙</button>
     </header>
+
     <nav>
         <button class="filter-btn" data-category="all">All</button>
         <button class="filter-btn" data-category="images">Images</button>
@@ -19,6 +20,22 @@
         <button class="filter-btn" data-category="movies">Movies</button>
         <button class="filter-btn" data-category="docs">Docs</button>
     </nav>
+
     <main id="content"></main>
+
+    <!-- پنل مدیریت برای افزودن لینک جدید -->
+    <div id="admin-panel">
+        <h2>➕ افزودن لینک جدید</h2>
+        <input type="text" id="urlInput" placeholder="لینک را وارد کنید">
+        <select id="typeSelect">
+            <option value="images">تصویر</option>
+            <option value="gif">گیف</option>
+            <option value="movies">فیلم</option>
+            <option value="docs">سند</option>
+        </select>
+        <button onclick="addNewLink()">➕ افزودن</button>
+    </div>
+
+    <button id="admin-btn" onclick="toggleAdmin()">⚙️ مدیریت</button>
 </body>
 </html>
