@@ -12,33 +12,34 @@
         <h1>ChinaHub</h1>
         <button id="theme-toggle">🌙</button>
     </header>
+
     <nav>
         <button class="filter-btn" data-category="images">Images</button>
         <button class="filter-btn" data-category="gif">GIF</button>
         <button class="filter-btn" data-category="movies">Movies</button>
     </nav>
-    
+
     <main id="content"></main>
-    
+
+    <!-- فرم ورود به پنل مدیریت -->
     <div id="login-panel">
-        <h2>ورود به مدیریت</h2>
-        <input type="password" id="password" placeholder="رمز عبور">
-        <button id="login-btn">ورود</button>
+        <h2>🔑 ورود مدیر</h2>
+        <input type="password" id="passwordInput" placeholder="رمز را وارد کنید">
+        <button onclick="checkPassword()">ورود</button>
     </div>
-    
-    <div id="admin-panel" style="display: none;">
-        <h2>مدیریت لینک‌ها</h2>
-        <form id="add-link-form">
-            <input type="text" id="new-url" placeholder="لینک جدید" required>
-            <select id="new-type">
-                <option value="images">Image</option>
-                <option value="gif">GIF</option>
-                <option value="movies">Movie</option>
-            </select>
-            <button type="submit">افزودن</button>
-        </form>
-        <ul id="link-list"></ul>
-        <button id="logout-btn">خروج</button>
+
+    <!-- پنل مدیریت برای افزودن لینک جدید -->
+    <div id="admin-panel">
+        <h2>➕ افزودن لینک جدید</h2>
+        <input type="text" id="urlInput" placeholder="لینک را وارد کنید">
+        <select id="typeSelect">
+            <option value="images">تصویر</option>
+            <option value="gif">گیف</option>
+            <option value="movies">فیلم</option>
+        </select>
+        <button onclick="addNewLink()">➕ افزودن</button>
     </div>
+
+    <button id="admin-btn" onclick="showLogin()">⚙️ مدیریت</button>
 </body>
 </html>
