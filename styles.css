@@ -5,6 +5,17 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-theme {
+    background-color: #121212;
+    color: #FFA500;
+}
+
+body:not(.dark-theme) {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 header {
@@ -19,6 +30,7 @@ nav {
     justify-content: center;
     padding: 10px;
     background-color: #1a1a1a;
+    flex-wrap: wrap;
 }
 
 .filter-btn {
@@ -34,6 +46,14 @@ nav {
 
 .filter-btn:hover {
     background-color: #ff8c00;
+}
+
+#searchInput {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
 }
 
 #content {
@@ -73,4 +93,15 @@ nav {
     padding: 10px 15px;
     border: none;
     cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+    }
+
+    .filter-btn, #searchInput {
+        width: 100%;
+        margin: 5px 0;
+    }
 }
