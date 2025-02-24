@@ -1,75 +1,68 @@
 const content = document.getElementById("content");
-const filterButtons = document.querySelectorAll(".filter-btn");
-const themeToggle = document.getElementById("theme-toggle");
+const addForm = document.getElementById("add-link-form");
+const linkList = document.getElementById("link-list");
 const loginPanel = document.getElementById("login-panel");
 const adminPanel = document.getElementById("admin-panel");
-const adminBtn = document.getElementById("admin-btn");
+const passwordInput = document.getElementById("password");
+const loginBtn = document.getElementById("login-btn");
+const logoutBtn = document.getElementById("logout-btn");
 
-// لیست لینک‌ها
-const links = [
+let links = JSON.parse(localStorage.getItem("links")) || [];
 
-    { url: "https://gifcandy.net/wp-content/uploads/2019/01/1-4.gif", type: "gif" }
-];
-
-// نمایش لینک‌ها در صفحه
-function displayLinks(filter) {
+// نمایش لینک‌ها
+function displayLinks() {
     content.innerHTML = "";
-    links.forEach(link => {
-        if (link.type === filter) {
-            const item = document.createElement("div");
-            item.classList.add("item");
+    linkList.innerHTML = "";
 
-            if (link.type === "images" || link.type === "gif") {
-                item.innerHTML = `<img src="${link.url}" width="200px">`;
-            } else if (link.type === "movies") {
-                item.innerHTML = `<video src="${link.url}" width="200px" controls></video>`;
-            }
-
-            content.appendChild(item);
-        }
+    links.forEach((link, index) => {
+        const item = document.createElement("div");
+        item.innerHTML = `<a href="${link.url}" target="_blank">${link.url}</a> 
+                          <button onclick="deleteLink(${index})">❌</button>`;
+        content.appendChild(item);
+        
+        const listItem = document.createElement("li");
+        listItem.textContent = link.url;
+        linkList.appendChild(listItem);
     });
+
+    localStorage.setItem("links", JSON.stringify(links));
 }
 
-// تغییر دسته‌بندی
-filterButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        const category = button.getAttribute("data-category");
-        displayLinks(category);
-    });
+// افزودن لینک جدید
+addForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const newUrl = document.getElementById("new-url").value;
+    const newType = document.getElementById("new-type").value;
+
+    links.push({ url: newUrl, type: newType });
+    displayLinks();
+    addForm.reset();
 });
 
-// تغییر تم
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark-theme");
-});
-
-// نمایش فرم ورود به مدیریت
-function showLogin() {
-    loginPanel.style.display = "block";
+// حذف لینک
+function deleteLink(index) {
+    if (confirm("آیا مطمئن هستید؟")) {
+        links.splice(index, 1);
+        displayLinks();
+    }
 }
 
-// بررسی رمز ورود
-function checkPassword() {
-    const password = document.getElementById("passwordInput").value;
-    if (password === "13851385mnjlltuq") {  // رمز ورود
+// مدیریت ورود و خروج
+const adminPassword = "1234";
+
+loginBtn.addEventListener("click", () => {
+    if (passwordInput.value === adminPassword) {
         loginPanel.style.display = "none";
         adminPanel.style.display = "block";
     } else {
         alert("رمز اشتباه است!");
     }
-}
+});
 
-// افزودن لینک جدید
-function addNewLink() {
-    const url = document.getElementById("urlInput").value;
-    const type = document.getElementById("typeSelect").value;
+logoutBtn.addEventListener("click", () => {
+    adminPanel.style.display = "none";
+    loginPanel.style.display = "block";
+});
 
-    if (url) {
-        links.push({ url, type });
-        displayLinks(type);
-        document.getElementById("urlInput").value = "";
-    }
-}
-
-// نمایش لینک‌ها در ابتدا
-displayLinks("images");
+// نمایش لینک‌ها هنگام بارگذاری صفحه
+displayLinks();
