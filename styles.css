@@ -3,29 +3,74 @@ body {
     color: #FFA500;
     font-family: Arial, sans-serif;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 header {
-    background-color: #333;
-    padding: 10px;
+    background-color: #1e1e1e;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-button {
-    background-color: #FFA500;
-    color: #121212;
+nav {
+    display: flex;
+    justify-content: center;
     padding: 10px;
+    background-color: #1a1a1a;
+}
+
+.filter-btn {
+    background-color: #FFA500;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.filter-btn:hover {
+    background-color: #ff8c00;
+}
+
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
+.item {
+    background-color: #222;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.item:hover {
+    transform: scale(1.05);
+}
+
+#login-panel, #admin-panel {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+#admin-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #FFA500;
+    padding: 10px 15px;
     border: none;
     cursor: pointer;
-}
-
-#admin-panel {
-    background-color: #222;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-}
-
-input, select {
-    padding: 5px;
-    margin: 5px;
 }
