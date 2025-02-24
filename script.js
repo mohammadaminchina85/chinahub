@@ -11,6 +11,7 @@ let links = JSON.parse(localStorage.getItem("links")) || [
    // { url: "https://example.com/image1.jpg", type: "images" },
   //  { url: "https://example.com/video.mp4", type: "movies" },
     { url: "https://gifcandy.net/wp-content/uploads/2025/01/gifcandy-5.webp", type: "gif" }
+   <iframe src="https://drive.google.com/file/d/19tZ8XtH3sYtqrzLw3eH7kWqUZCjitQOi/preview" width="200px" height="150px" allowfullscreen></iframe>
 ];
 
 // نمایش لینک‌ها در صفحه
