@@ -5,6 +5,7 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 header {
@@ -33,6 +34,10 @@ nav {
 }
 
 .filter-btn:hover {
+    background-color: #ff8c00;
+}
+
+.filter-btn.active {
     background-color: #ff8c00;
 }
 
@@ -65,6 +70,12 @@ nav {
     border-radius: 8px;
 }
 
+#login-panel input, #admin-panel input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
 #admin-btn {
     position: fixed;
     bottom: 20px;
@@ -73,4 +84,13 @@ nav {
     padding: 10px 15px;
     border: none;
     cursor: pointer;
+}
+
+.dark-theme {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+#login-error {
+    color: red;
 }
