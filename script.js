@@ -7,9 +7,9 @@ const adminBtn = document.getElementById("admin-btn");
 
 // لیست لینک‌ها
 const links = [
-    { url: "https://example.com/image1.jpg", type: "images" },
-    { url: "https://example.com/video.mp4", type: "movies" },
-    { url: "https://example.com/animation.gif", type: "gif" }
+   // { url: "https://example.com/image1.jpg", type: "images" },
+   // { url: "https://example.com/video.mp4", type: "movies" },
+   // { url: "https://example.com/animation.gif", type: "gif" }
 ];
 
 // نمایش لینک‌ها در صفحه
