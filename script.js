@@ -11,6 +11,7 @@ let links = JSON.parse(localStorage.getItem("links")) || [
     { url: "https://mohammadaminchina85.github.io/pic2007/photo_2025-02-24_21-32-19.jpg", type: "images" },
      { url: "https://mohammadaminchina85.github.io/pic2007/video_2025-02-24_18-33-58.mp4", type: "movies" },
     { url: "https://gifcandy.net/wp-content/uploads/2025/01/gifcandy-5.webp", type: "gif" }
+    <iframe src="https://www.pornhub.com/embed/67c0d76b4c549" frameborder="0" width="560" height="340" scrolling="no" allowfullscreen></iframe>
 ];
 
 // نمایش لینک‌ها در صفحه
