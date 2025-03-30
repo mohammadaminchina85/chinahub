@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 0;
     transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden; /* جلوگیری از اسکرول افقی */
 }
 
 body.dark-theme {
@@ -20,7 +21,7 @@ body:not(.dark-theme) {
 
 header {
     background-color: #1e1e1e;
-    padding: 20px;
+    padding: 25px;
     font-size: 24px;
     font-weight: bold;
 }
@@ -28,7 +29,7 @@ header {
 nav {
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 15px;
     background-color: #1a1a1a;
     flex-wrap: wrap;
 }
@@ -36,12 +37,14 @@ nav {
 .filter-btn {
     background-color: #FFA500;
     border: none;
-    padding: 10px 20px;
-    margin: 5px;
+    padding: 15px 25px; /* افزایش اندازه برای لمس راحت‌تر */
+    margin: 8px;
     cursor: pointer;
     color: #000;
     font-weight: bold;
+    font-size: 16px;
     transition: 0.3s;
+    border-radius: 5px;
 }
 
 .filter-btn:hover {
@@ -49,11 +52,11 @@ nav {
 }
 
 #searchInput {
-    padding: 10px;
-    margin: 5px;
+    padding: 12px;
+    margin: 8px;
     border: none;
     border-radius: 5px;
-    width: 200px;
+    width: 250px;
 }
 
 #content {
@@ -65,8 +68,8 @@ nav {
 
 .item {
     background-color: #222;
-    padding: 10px;
-    margin: 10px;
+    padding: 15px;
+    margin: 12px;
     border-radius: 8px;
     transition: transform 0.3s;
     max-width: 100%;
@@ -82,7 +85,8 @@ nav {
     padding-bottom: 56.25%; /* نسبت 16:9 */
     height: 0;
     overflow: hidden;
-    width: 200px;
+    width: 100%;
+    max-width: 500px;
 }
 
 .video-container iframe {
@@ -92,39 +96,50 @@ nav {
     width: 100%;
     height: 100%;
     border-radius: 8px;
+    max-width: 100%;
 }
 
 #login-panel, #admin-panel {
     display: none;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 10px;
+    right: 10px;
     background-color: #333;
     padding: 15px;
     border-radius: 8px;
+    width: 90%; /* تنظیم عرض در موبایل */
+    max-width: 300px;
 }
 
 #admin-btn {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    bottom: 15px;
+    left: 15px;
     background-color: #FFA500;
-    padding: 10px 15px;
+    padding: 12px 18px;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 @media (max-width: 600px) {
     nav {
         flex-direction: column;
+        padding: 10px;
     }
 
     .filter-btn, #searchInput {
         width: 100%;
-        margin: 5px 0;
+        margin: 6px 0;
     }
     
     .video-container {
         width: 100%;
+    }
+    
+    #login-panel, #admin-panel {
+        width: 90%;
+        bottom: 10px;
+        right: 5px;
     }
 }
