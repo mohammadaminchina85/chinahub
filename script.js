@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // لیست لینک‌ها
     let links = JSON.parse(localStorage.getItem('links')) || [
-        { url: 'https://example.com/image1.jpg', type: 'images', title: 'تصویر نمونه 1' },
-        { url: 'https://example.com/video1.mp4', type: 'movies', title: 'فیلم نمونه' },
-        { url: 'https://example.com/animation.gif', type: 'gif', title: 'GIF نمونه' }
+        { url: 'mohammadaminchina85.github.io/pic2007/photo_2025-02-24_21-32-19.jpg', type: 'images', title: 'تصویر نمونه 1' },
+        { url: 'https://www.pornhub.com/embed/67cf3e5266465', type: 'movies', title: 'فیلم نمونه' },
+        { url: 'https://gifcandy.net/wp-content/uploads/2025/01/gifcandy-5.webp', type: 'gif', title: 'GIF نمونه' }
     ];
 
     // نمایش نوتیفیکیشن
