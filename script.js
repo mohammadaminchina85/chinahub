@@ -122,5 +122,26 @@ function clearStorage() {
     alert("همه لینک‌ها حذف شدند!");
 }
 
+// اضافه کردن تشخیص رویدادهای لمسی
+document.addEventListener('DOMContentLoaded', function() {
+    // جلوگیری از اسکرول دو انگشتی برای زوم
+    document.addEventListener('gesturestart', function(e) {
+        e.preventDefault();
+    });
+    
+    // بهینه‌سازی برای دستگاه‌های لمسی
+    if ('ontouchstart' in window) {
+        document.body.classList.add('touch-device');
+        
+        // بهبود عملکرد دکمه‌ها در دستگاه‌های لمسی
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.style.tapHighlightColor = 'transparent';
+            btn.style.webkitTapHighlightColor = 'transparent';
+        });
+    }
+});
+
+
 // نمایش لینک‌ها در ابتدا
 displayLinks("images");
