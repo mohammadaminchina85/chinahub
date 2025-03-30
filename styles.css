@@ -69,10 +69,29 @@ nav {
     margin: 10px;
     border-radius: 8px;
     transition: transform 0.3s;
+    max-width: 100%;
 }
 
 .item:hover {
     transform: scale(1.05);
+}
+
+/* استایل‌های جدید برای ویدیوها */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* نسبت 16:9 */
+    height: 0;
+    overflow: hidden;
+    width: 200px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
 }
 
 #login-panel, #admin-panel {
@@ -103,5 +122,9 @@ nav {
     .filter-btn, #searchInput {
         width: 100%;
         margin: 5px 0;
+    }
+    
+    .video-container {
+        width: 100%;
     }
 }
