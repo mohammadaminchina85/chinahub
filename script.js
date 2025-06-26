@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { type: 'gif', src: 'https://gifcandy.net/wp-content/uploads/2025/01/gifcandy-5.webp', caption: 'فوران' },
         { type: 'image', src: 'https://via.placeholder.com/400x300/FFD700/000000?text=Image+2', caption: 'Another great image' },
         { type: 'gif', src: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaG9wNXV5OWwzZW51cnZsdWptb3I1N3cwN2J4NmhkZXQzaGdsMm95OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEdv9E169S1J24640/giphy.gif', caption: 'Funny animation' },
-        { type: 'video', src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', caption: 'Elephants Dream short film' },
+        { type: 'video', src: 'https://github.com/mohammadaminchina85/pic2007/raw/refs/heads/main/video_2025-02-24_18-33-58.mp4', caption: 'Elephants Dream short film' },
         { type: 'image', src: 'https://via.placeholder.com/400x300/FF6347/000000?text=Image+3', caption: 'Sunrise over mountains' },
         { type: 'video', src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', caption: 'For Bigger Blazes' },
         { type: 'gif', src: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWM0NG51czR1ZmQzZmxoZzUwd293bHNreGFwZWV5Nzdtb3g1MmxrMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlC88e2c0e8sFkI/giphy.gif', caption: 'Cool GIF art' },
