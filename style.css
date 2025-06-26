@@ -68,6 +68,7 @@ body {
 /* Media Grid */
 .media-grid {
     display: grid;
+    /* این خط برای دسکتاپ باقی می ماند */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     padding: 20px;
@@ -99,8 +100,8 @@ body {
 .media-item img,
 .media-item video {
     width: 100%;
-    height: 200px;
-    object-fit: contain; /* این برای thumbnailها درست است */
+    height: 200px; /* این ارتفاع برای دسکتاپ مناسب است */
+    object-fit: contain;
     display: block;
     border-bottom: 1px solid var(--border-color);
 }
@@ -164,31 +165,20 @@ body {
 }
 
 .fullscreen-content {
-    /* تغییرات اصلی در اینجا */
-    /* بجای max-width/height ثابت، از flexbox و auto برای انعطاف پذیری بیشتر استفاده می کنیم */
     display: flex;
-    flex-direction: column; /* محتوا و کپشن زیر هم قرار بگیرند */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 20px; /* برای فضای داخلی مودال */
+    padding: 20px;
     box-sizing: border-box;
-
-    /* مهم: این تنظیمات را برای fullscreen-content برمی‌داریم تا خود تصویر/ویدئو کنترل اندازه را داشته باشد */
-    /* max-width: 90vw; */
-    /* max-height: 90vh; */
-    /* و به جای آن، برای خود img/video در fullscreen-content آن را تنظیم می‌کنیم */
 }
 
 .fullscreen-content img,
 .fullscreen-content video {
-    /* این بخش را اصلاح می‌کنیم */
-    max-width: calc(100vw - 40px); /* 100% عرض viewport منهای padding مودال */
-    max-height: calc(100vh - 40px); /* 100% ارتفاع viewport منهای padding مودال و فضای کپشن */
-    /* اگر کپشن هست، فضای کپشن را هم از max-height کم می کنیم. مثلا حدود 50px-70px برای کپشن. */
-    /* max-height: calc(100vh - 40px - 70px); */
-
-    object-fit: contain; /* این همیشه برای تمام صفحه باید contain باشد */
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vh - 40px);
+    object-fit: contain;
     display: block;
     border-radius: 5px;
 }
@@ -198,37 +188,47 @@ body {
     margin-top: 15px;
     font-size: 1.1em;
     text-align: center;
-    max-width: 90%; /* عرض کپشن را کمی بیشتر می کنیم تا در صورت طولانی بودن بهتر نمایش داده شود */
-    word-wrap: break-word; /* برای شکستن کلمات طولانی */
+    max-width: 90%;
+    word-wrap: break-word;
 }
 
 
-/* Responsive Design */
+/* Responsive Design - شروع تغییرات برای موبایل */
+
+/* @media برای تبلت و موبایل (عرض حداکثر 768px) */
 @media (max-width: 768px) {
     .navbar h1 {
         font-size: 1.8em;
     }
 
     .filters {
-        flex-direction: column;
+        flex-direction: column; /* دکمه‌های فیلتر زیر هم قرار بگیرند */
         align-items: center;
         gap: 8px;
     }
 
     .filter-btn {
-        width: 80%;
-        max-width: 200px;
+        width: 80%; /* دکمه‌ها عرض بیشتری داشته باشند */
+        max-width: 250px; /* حداکثر عرض برای دکمه‌ها */
     }
 
     .media-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
+        /* **تغییر اصلی:** گرید را به 1 ستون تغییر می‌دهیم */
+        grid-template-columns: 1fr; /* تنها یک ستون کامل */
+        gap: 15px; /* فاصله بین آیتم‌ها */
         padding: 15px;
+    }
+
+    .media-item {
+        /* در موبایل، آیتم‌ها ممکن است نیاز به padding یا margin بیشتری داشته باشند */
+        margin-bottom: 15px; /* فاصله بین آیتم‌های تکی */
     }
 
     .media-item img,
     .media-item video {
-        height: 150px;
+        /* **تغییر اصلی:** ارتفاع را افزایش می‌دهیم تا بزرگ‌تر دیده شوند */
+        height: 250px; /* ارتفاع بیشتر برای نمایش بزرگ‌تر در موبایل */
+        /* object-fit: contain; قبلاً تنظیم شده و برای اینجا هم مناسب است */
     }
 
     .telegram-btn {
@@ -238,14 +238,17 @@ body {
 
     .fullscreen-content img,
     .fullscreen-content video {
-        /* برای موبایل نیز padding و فضای کپشن را در نظر می‌گیریم */
-        max-width: calc(100vw - 30px); /* مثلا 15px padding از هر طرف */
-        max-height: calc(100vh - 30px - 60px); /* 30px padding + فضای کپشن */
+        /* این برای نمایش تمام صفحه است، باید همیشه بهینه باشد */
+        max-width: calc(100vw - 30px);
+        max-height: calc(100vh - 30px - 60px); /* 30px padding + فضای تخمینی برای کپشن */
     }
 }
 
+/* @media برای موبایل‌های کوچک‌تر (اختیاری، اگر نیاز به تنظیم دقیق‌تر دارید) */
 @media (max-width: 480px) {
-    .media-grid {
-        grid-template-columns: 1fr;
+    /* در این حالت grid-template-columns: 1fr; از @media بالاتر به ارث می‌رسد و نیاز به تکرار نیست */
+    .media-item img,
+    .media-item video {
+        height: 220px; /* اگر نیاز به ارتفاع کمی کمتر برای موبایل‌های کوچک‌تر دارید */
     }
 }
