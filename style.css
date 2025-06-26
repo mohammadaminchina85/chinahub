@@ -1,0 +1,251 @@
+:root {
+    --primary-bg: #1a1a1a; /* Dark black */
+    --secondary-bg: #333; /* Slightly lighter black for elements */
+    --accent-color: #ff6600; /* Bright orange */
+    --text-color: #f5f5f5; /* Off-white for text */
+    --border-color: #555;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+/* Header (Navbar) */
+.navbar {
+    background-color: var(--secondary-bg);
+    padding: 15px 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.navbar h1 {
+    margin: 0;
+    color: var(--accent-color);
+    font-size: 2em;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 10px;
+    background-color: var(--primary-bg);
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--primary-bg);
+}
+
+.filter-btn.active {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--primary-bg);
+    font-weight: bold;
+}
+
+/* Media Grid */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.media-item {
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 10px;
+    height: auto;
+}
+
+.media-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.media-item img,
+.media-item video {
+    width: 100%;
+    height: 200px;
+    object-fit: contain; /* این برای thumbnailها درست است */
+    display: block;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.media-item .caption {
+    padding: 10px;
+    font-size: 0.9em;
+    color: var(--text-color);
+    word-break: break-word;
+}
+
+/* Hide media items based on filter */
+.media-item.hidden {
+    display: none;
+}
+
+/* Telegram Section */
+.telegram-section {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: var(--primary-bg);
+    border-top: 1px solid var(--border-color);
+}
+
+.telegram-btn {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.telegram-btn:hover {
+    background-color: #ff8533;
+}
+
+/* Fullscreen Modal */
+.fullscreen-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.fullscreen-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fullscreen-content {
+    /* تغییرات اصلی در اینجا */
+    /* بجای max-width/height ثابت، از flexbox و auto برای انعطاف پذیری بیشتر استفاده می کنیم */
+    display: flex;
+    flex-direction: column; /* محتوا و کپشن زیر هم قرار بگیرند */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px; /* برای فضای داخلی مودال */
+    box-sizing: border-box;
+
+    /* مهم: این تنظیمات را برای fullscreen-content برمی‌داریم تا خود تصویر/ویدئو کنترل اندازه را داشته باشد */
+    /* max-width: 90vw; */
+    /* max-height: 90vh; */
+    /* و به جای آن، برای خود img/video در fullscreen-content آن را تنظیم می‌کنیم */
+}
+
+.fullscreen-content img,
+.fullscreen-content video {
+    /* این بخش را اصلاح می‌کنیم */
+    max-width: calc(100vw - 40px); /* 100% عرض viewport منهای padding مودال */
+    max-height: calc(100vh - 40px); /* 100% ارتفاع viewport منهای padding مودال و فضای کپشن */
+    /* اگر کپشن هست، فضای کپشن را هم از max-height کم می کنیم. مثلا حدود 50px-70px برای کپشن. */
+    /* max-height: calc(100vh - 40px - 70px); */
+
+    object-fit: contain; /* این همیشه برای تمام صفحه باید contain باشد */
+    display: block;
+    border-radius: 5px;
+}
+
+.fullscreen-content p {
+    color: white;
+    margin-top: 15px;
+    font-size: 1.1em;
+    text-align: center;
+    max-width: 90%; /* عرض کپشن را کمی بیشتر می کنیم تا در صورت طولانی بودن بهتر نمایش داده شود */
+    word-wrap: break-word; /* برای شکستن کلمات طولانی */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar h1 {
+        font-size: 1.8em;
+    }
+
+    .filters {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .filter-btn {
+        width: 80%;
+        max-width: 200px;
+    }
+
+    .media-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .media-item img,
+    .media-item video {
+        height: 150px;
+    }
+
+    .telegram-btn {
+        padding: 10px 25px;
+        font-size: 1em;
+    }
+
+    .fullscreen-content img,
+    .fullscreen-content video {
+        /* برای موبایل نیز padding و فضای کپشن را در نظر می‌گیریم */
+        max-width: calc(100vw - 30px); /* مثلا 15px padding از هر طرف */
+        max-height: calc(100vh - 30px - 60px); /* 30px padding + فضای کپشن */
+    }
+}
+
+@media (max-width: 480px) {
+    .media-grid {
+        grid-template-columns: 1fr;
+    }
+}
