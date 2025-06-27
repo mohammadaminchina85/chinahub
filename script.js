@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Changed video to iframe
         { type: 'video', src: 'https://www.pornhub.com/embed/68583d99e0e33', caption: 'ساک زدن' }, 
         { type: 'gif', src: 'https://gifcandy.net/wp-content/uploads/2025/04/gifcandy-6.webp', caption: 'ساک پر تف' },
-        { type: 'image', src: '', caption: 'The vibrant cityscape illuminated at dusk, with towering skyscrapers and bustling streets below.' },
+       // { type: 'image', src: '', caption: 'The vibrant cityscape illuminated at dusk, with towering skyscrapers and bustling streets below.' },
         { type: 'gif', src: 'https://gifcandy.net/wp-content/uploads/2025/01/gifcandy-5.webp', caption: 'فوران اب کص' },
         // Changed video to iframe
         { type: 'video', src: 'https://www.pornhub.com/embed/682a0f50b8cb0', caption: 'کیوت' }, 
