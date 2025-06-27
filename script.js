@@ -3,31 +3,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const fullscreenModal = document.getElementById('fullscreen-modal');
     const fullscreenContent = document.querySelector('.fullscreen-content');
+    const backButton = document.getElementById('back-button'); // **جدید: انتخاب دکمه Back**
 
-    // Sample media data
+    // Sample media data (بدون تغییر)
     const mediaData = [
         { type: 'image', src: 'https://mohammadaminchina85.github.io/pic2007/photo_2025-02-24_21-32-19.jpg', caption: 'Caption N1' },
-        { type: 'video', src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', caption: 'A nice video of Bunny' },
-        { type: 'gif', src: 'https://gifcandy.net/wp-content/uploads/2025/01/gifcandy-5.webp', caption: 'فوران' },
+        { type: 'video', src: 'https://github.com/mohammadaminchina85/pic2007/raw/refs/heads/main/video_2025-02-24_18-33-58.mp4', caption: 'A nice video of Bunny' },
+        { type: 'gif', src: 'https://gifcandy.net/wp-content/uploads/2025/01/gifcandy-5.webp', caption: 'Animated GIF example' },
         { type: 'image', src: 'https://via.placeholder.com/400x300/FFD700/000000?text=Image+2', caption: 'Another great image' },
-        { type: 'gif', src: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaG9wNXV5OWwzZW51cnZsdWptb3I1N3cwN2J4NmhkZXQzaGdsMm95OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEdv9E169S1J24640/giphy.gif', caption: 'Funny animation' },
-        { type: 'video', src: 'https://github.com/mohammadaminchina85/pic2007/raw/refs/heads/main/video_2025-02-24_18-33-58.mp4', caption: 'Elephants Dream short film' },
+        { type: 'gif', src: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaG9wNXV5OWwzZW51cnZsdWptb3I1N3cwN2J4NmhkZXQzaGdsMm95OCZlcD1WcFlfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0Pmc/3oEdv9E169S1J24640/giphy.gif', caption: 'Funny animation' },
+        { type: 'video', src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', caption: 'Elephants Dream short film' },
         { type: 'image', src: 'https://via.placeholder.com/400x300/FF6347/000000?text=Image+3', caption: 'Sunrise over mountains' },
         { type: 'video', src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', caption: 'For Bigger Blazes' },
-        { type: 'gif', src: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWM0NG51czR1ZmQzZmxoZzUwd293bHNreGFwZWV5Nzdtb3g1MmxrMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlC88e2c0e8sFkI/giphy.gif', caption: 'Cool GIF art' },
+        { type: 'gif', src: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWM0NG51czR1ZmQzZmxoZzUwd293bHNreGFwZWV5Nzdtb3g1MmxrMyZlcD1WcFlfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0Pmc/l0HlC88e2c0e8sFkI/giphy.gif', caption: 'Cool GIF art' },
         { type: 'image', src: 'https://via.placeholder.com/400x300/ADFF2F/000000?text=Image+4', caption: 'Sunset view (cap for m4)' },
         { type: 'image', src: 'https://via.placeholder.com/400x300/6495ED/000000?text=Image+5', caption: 'City skyline' },
         { type: 'video', src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4', caption: 'For Bigger Joyrides' },
     ];
 
-    // Function to render media items
+    // Function to close fullscreen modal (جدید: یک تابع مجزا برای بستن مودال)
+    function closeFullscreenModal() {
+        fullscreenModal.classList.remove('active');
+        const videoInModal = fullscreenContent.querySelector('video');
+        if (videoInModal) {
+            videoInModal.pause();
+            videoInModal.currentTime = 0; // Reset video to start
+        }
+
+        // Resume autoplay for visible grid videos after closing modal
+        setTimeout(() => {
+            document.querySelectorAll('.media-item video').forEach(video => {
+                if (video.closest('.media-item') && !video.closest('.media-item').classList.contains('hidden')) {
+                    video.play().catch(e => console.log("Video autoplay failed on resume:", e));
+                }
+            });
+        }, 100);
+    }
+
+    // ... تابع renderMedia (بدون تغییر) ...
     function renderMedia(filterType = 'all') {
-        mediaGrid.innerHTML = ''; // Clear existing media
+        mediaGrid.innerHTML = '';
         mediaData.forEach(item => {
             const mediaItem = document.createElement('div');
             mediaItem.classList.add('media-item', item.type);
-            mediaItem.dataset.src = item.src; // Store full source for fullscreen
-            mediaItem.dataset.type = item.type; // Store type for fullscreen
+            mediaItem.dataset.src = item.src;
+            mediaItem.dataset.type = item.type;
 
             let mediaElement;
             if (item.type === 'image' || item.type === 'gif') {
@@ -37,12 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (item.type === 'video') {
                 mediaElement = document.createElement('video');
                 mediaElement.src = item.src;
-                mediaElement.controls = false; // No controls on thumbnail
-                mediaElement.muted = true; // Mute for autoplay preview
-                mediaElement.loop = true; // Loop for preview
-                mediaElement.autoplay = true; // Autoplay for preview
-                mediaElement.preload = 'metadata'; // Load enough to get dimensions/duration
-                // اضافه کردن خاصیت playsinline برای iOS
+                mediaElement.controls = false;
+                mediaElement.muted = true;
+                mediaElement.loop = true;
+                mediaElement.autoplay = true;
+                mediaElement.preload = 'metadata';
                 mediaElement.setAttribute('playsinline', '');
             }
 
@@ -62,48 +81,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial render: show all media by default
     renderMedia('all');
 
-    // Add event listeners to filter buttons
+    // Add event listeners to filter buttons (بدون تغییر)
     filterButtons.forEach(button => {
         button.addEventListener('click', (event) => {
-            // Pause all videos in grid before filtering
             document.querySelectorAll('.media-item video').forEach(video => {
                 video.pause();
-                video.currentTime = 0; // Reset video to start
+                video.currentTime = 0;
             });
 
-            // Remove 'active' class from all buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add 'active' class to the clicked button
             event.target.classList.add('active');
 
             const filterType = event.target.dataset.filter;
             renderMedia(filterType);
 
-            // Re-autoplay visible videos after filtering
-            // (might need a slight delay or observation for large numbers)
             setTimeout(() => {
                 document.querySelectorAll('.media-item video').forEach(video => {
-                    // Check if the video is currently visible in the DOM
                     if (!video.closest('.media-item').classList.contains('hidden')) {
                          video.play().catch(e => console.log("Video autoplay failed:", e));
                     }
                 });
-            }, 100); // Small delay to ensure elements are rendered
+            }, 100);
         });
     });
 
-    // Handle clicking on media items to go fullscreen
+    // Handle clicking on media items to go fullscreen (بدون تغییر)
     mediaGrid.addEventListener('click', (event) => {
         const mediaItem = event.target.closest('.media-item');
         if (mediaItem) {
             const src = mediaItem.dataset.src;
             const type = mediaItem.dataset.type;
 
-            // Pause all grid videos before opening fullscreen
             document.querySelectorAll('.media-item video').forEach(video => video.pause());
 
-
-            fullscreenContent.innerHTML = ''; // Clear previous content
+            fullscreenContent.innerHTML = '';
 
             let fullscreenElement;
             if (type === 'image' || type === 'gif') {
@@ -113,49 +124,33 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (type === 'video') {
                 fullscreenElement = document.createElement('video');
                 fullscreenElement.src = src;
-                fullscreenElement.controls = true; // Show controls in fullscreen
-                fullscreenElement.autoplay = true; // Autoplay in fullscreen
-                fullscreenElement.loop = true; // Loop in fullscreen (optional for fullscreen)
-                fullscreenElement.setAttribute('playsinline', ''); // برای iOS
+                fullscreenElement.controls = true;
+                fullscreenElement.autoplay = true;
+                fullscreenElement.loop = true;
+                fullscreenElement.setAttribute('playsinline', '');
             }
 
             fullscreenContent.appendChild(fullscreenElement);
             fullscreenModal.classList.add('active');
 
-            // Optionally, add a caption to the fullscreen modal
             const captionText = mediaItem.querySelector('.caption').textContent;
             if (captionText) {
                 const fullscreenCaption = document.createElement('p');
                 fullscreenCaption.textContent = captionText;
-                // استایل کپشن در CSS مدیریت می شود
-                // fullscreenCaption.style.color = 'white';
-                // fullscreenCaption.style.marginTop = '10px';
                 fullscreenContent.appendChild(fullscreenCaption);
             }
         }
     });
 
-    // Close fullscreen modal when clicking outside the content
+    // Close fullscreen modal when clicking outside the content (اصلاح شده)
     fullscreenModal.addEventListener('click', (event) => {
-        // Check if the click was directly on the modal background, not the content
-        if (event.target === fullscreenModal || event.target.tagName === 'IMG' || event.target.tagName === 'VIDEO') { // اضافه کردن تگ های IMG و VIDEO برای بستن با کلیک روی خود محتوا
-            fullscreenModal.classList.remove('active');
-            // Pause video if playing when closing modal
-            const videoInModal = fullscreenContent.querySelector('video');
-            if (videoInModal) {
-                videoInModal.pause();
-                videoInModal.currentTime = 0; // Reset video to start
-            }
-
-            // Resume autoplay for visible grid videos after closing modal
-            setTimeout(() => {
-                document.querySelectorAll('.media-item video').forEach(video => {
-                    // Check if the video's parent media-item is visible (not hidden by filter)
-                    if (video.closest('.media-item') && !video.closest('.media-item').classList.contains('hidden')) {
-                        video.play().catch(e => console.log("Video autoplay failed on resume:", e));
-                    }
-                });
-            }, 100);
+        // حالا فقط اگر روی پس زمینه مودال کلیک شد، بسته شود.
+        // دکمه Back به طور مجزا کار می کند.
+        if (event.target === fullscreenModal) {
+            closeFullscreenModal();
         }
     });
+
+    // **جدید: Event listener برای دکمه Back**
+    backButton.addEventListener('click', closeFullscreenModal);
 });
