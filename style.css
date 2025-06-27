@@ -65,6 +65,35 @@ body {
     font-weight: bold;
 }
 
+/* Search Container */
+.search-container {
+    padding: 10px 20px;
+    background-color: var(--primary-bg);
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+
+#search-input {
+    width: 90%;
+    max-width: 500px;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    font-size: 1em;
+    box-sizing: border-box; /* Ensures padding doesn't increase total width */
+}
+
+#search-input::placeholder {
+    color: #aaa;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
 /* Media Grid */
 .media-grid {
     display: grid;
@@ -97,12 +126,22 @@ body {
 }
 
 .media-item img,
-.media-item video {
+.media-item video { /* Keeping video here in case it's used for something else later */
     width: 100%;
     height: 200px; 
-    object-fit: contain;
+    object-fit: contain; 
     display: block;
     border-bottom: 1px solid var(--border-color);
+}
+
+/* Styles for iframe in media grid - now also applies to 'video' type */
+.media-item iframe {
+    width: 100%;
+    height: 200px; /* Same height as images/videos */
+    border: none; /* Remove default iframe border */
+    display: block;
+    border-bottom: 1px solid var(--border-color);
+    background-color: black; /* Dark background for iframe */
 }
 
 .media-item .caption {
@@ -187,6 +226,27 @@ body {
     background-color: var(--accent-color);
 }
 
+/* Download Button in Fullscreen Modal */
+.download-button {
+    position: absolute;
+    bottom: 20px; /* distance from bottom */
+    right: 20px; /* distance from right */
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    z-index: 1001; /* Ensure it's above the media content */
+    transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+    background-color: #ff8533;
+}
+
 .fullscreen-content {
     display: flex;
     flex-direction: column;
@@ -195,15 +255,29 @@ body {
     position: relative;
     padding: 20px;
     box-sizing: border-box;
+    /* Adjust margin to give space for the download button at the bottom */
+    margin: 20px 20px 60px 20px; /* Top, Right, Bottom (for download button), Left */
 }
 
 .fullscreen-content img,
-.fullscreen-content video {
-    max-width: calc(100vw - 40px);
-    max-height: calc(100vh - 40px); 
-    object-fit: contain;
+.fullscreen-content video { /* Keeping video here in case it's used for something else later */
+    max-width: 100%; /* Use 100% of the internal space of fullscreen-content */
+    max-height: 100%;
+    object-fit: contain; 
     display: block;
     border-radius: 5px;
+}
+
+/* Styles for iframe in fullscreen modal - now also applies to 'video' type */
+.fullscreen-content iframe {
+    max-width: 100%;
+    max-height: 100%;
+    width: 90vw; /* Wider for fullscreen */
+    height: 70vh; /* Taller for fullscreen */
+    object-fit: contain;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
 }
 
 .fullscreen-content p {
@@ -217,36 +291,32 @@ body {
 
 
 /* Responsive Design */
-
 @media (max-width: 768px) {
     .navbar h1 {
         font-size: 1.8em;
     }
 
     .filters {
-        flex-direction: column; 
+        flex-direction: column;
         align-items: center;
         gap: 8px;
     }
 
     .filter-btn {
-        width: 80%; 
-        max-width: 250px; 
+        width: 80%;
+        max-width: 200px;
     }
 
     .media-grid {
-        grid-template-columns: 1fr; /* Single column for mobile */
-        gap: 15px; 
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
         padding: 15px;
     }
 
-    .media-item {
-        margin-bottom: 15px; 
-    }
-
     .media-item img,
-    .media-item video {
-        height: 250px; /* Larger height for mobile thumbnails */
+    .media-item video,
+    .media-item iframe { /* Apply to iframe as well */
+        height: 150px; 
     }
 
     .telegram-btn {
@@ -262,16 +332,32 @@ body {
         font-size: 1.3em;
     }
 
+    /* Download button for mobile */
+    .download-button {
+        bottom: 15px;
+        right: 15px;
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+
+    .fullscreen-content {
+        /* Adjust padding for mobile to allow more content space */
+        padding: 10px; 
+        margin: 10px 10px 50px 10px; /* Space from edges and for download button */
+    }
+
     .fullscreen-content img,
-    .fullscreen-content video {
-        max-width: calc(100vw - 30px);
-        max-height: calc(100vh - 30px - 60px); 
+    .fullscreen-content video,
+    .fullscreen-content iframe { /* Apply to iframe as well */
+        max-width: 100%;
+        max-height: 100%;
+        width: 95vw; /* Use more width for mobile */
+        height: 60vh; /* Slightly less height for better display on mobile */
     }
 }
 
 @media (max-width: 480px) {
-    .media-item img,
-    .media-item video {
-        height: 220px; 
+    .media-grid {
+        grid-template-columns: 1fr; /* Single column for very small screens */
     }
 }
