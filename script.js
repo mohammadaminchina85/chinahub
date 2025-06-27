@@ -10,22 +10,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sample media data - NOW ALL VIDEOS ARE IFRAMES
     // IMPORTANT: Replace 'src' with actual embed URLs for your videos
     const mediaData = [
-        { type: 'image', src: 'https://via.placeholder.com/600x400/FFA500/000000?text=Image+1', caption: 'A beautiful golden sunrise over tranquil mountains, casting a warm glow across the landscape.' },
+        { type: 'image', src: 'https://mohammadaminchina85.github.io/pic2007/photo_2025-02-24_21-32-19.jpg', caption: 'boobs' },
         // Changed video to iframe
-        { type: 'video', src: 'https://www.pornhub.com/embed/68583d99e0e33', caption: 'Big Buck Bunny embedded from Archive.org.' }, 
-        { type: 'gif', src: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eDF4N3BvcWlsZm50bDBtMW9mNWc1anZ0a2k3bXJ1c3g2d21jOCZlcD1WcFlfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0Pmc/2t9yU7wBwT3n9tO2pX/giphy.gif', caption: 'A captivating animated GIF showing abstract colors and mesmerizing patterns in motion.' },
-        { type: 'image', src: 'https://via.placeholder.com/800x600/FFD700/000000?text=Image+2', caption: 'The vibrant cityscape illuminated at dusk, with towering skyscrapers and bustling streets below.' },
-        { type: 'gif', src: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaG9wNXV5OWwzZW51cnZsdWptb3I1N3cwN2J4NmhkZXQzaGdsMm95OCZlcD1WcFlfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0Pmc/3oEdv9E169S1J24640/giphy.gif', caption: 'A humorous animation featuring a character expressing surprise and confusion, perfect for reactions.' },
+        { type: 'video', src: 'https://www.pornhub.com/embed/68583d99e0e33', caption: 'ساک زدن' }, 
+        { type: 'gif', src: 'https://gifcandy.net/wp-content/uploads/2025/04/gifcandy-6.webp', caption: 'ساک پر تف' },
+        { type: 'image', src: '', caption: 'The vibrant cityscape illuminated at dusk, with towering skyscrapers and bustling streets below.' },
+        { type: 'gif', src: 'https://gifcandy.net/wp-content/uploads/2025/01/gifcandy-5.webp', caption: 'فوران اب کص' },
         // Changed video to iframe
-        { type: 'video', src: 'https://archive.org/embed/ElephantsDream', caption: 'Elephants Dream embedded from Archive.org.' }, 
-        { type: 'image', src: 'https://via.placeholder.com/700x500/FF6347/000000?text=Image+3', caption: 'Lush autumn foliage displays a rich palette of reds, oranges, and yellows in a serene forest.' },
+        { type: 'video', src: 'https://www.pornhub.com/embed/682a0f50b8cb0', caption: 'کیوت' }, 
+     //   { type: 'image', src: '', caption: 'Lush autumn foliage displays a rich palette of reds, oranges, and yellows in a serene forest.' },
         // Changed video to iframe
-        { type: 'video', src: 'https://archive.org/embed/ForBigBuckBunny', caption: 'For Bigger Blazes from Archive.org embedded.' }, 
-        { type: 'gif', src: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWM0NG51czR1ZmQzZmxoZzUwd293bHNreGFwZWV5Nzdtb3g1MmxrMyZlcD1WcFlfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0Pmc/l0HlC88e2c0e8sFkI/giphy.gif', caption: 'An artistic GIF of flowing abstract patterns, perfect for background visuals or mood setting.' },
-        { type: 'image', src: 'https://via.placeholder.com/900x600/ADFF2F/000000?text=Image+4', caption: 'A peaceful, sprawling landscape at dawn, with mist rising from the fields and distant hills.' },
-        { type: 'image', src: 'https://via.placeholder.com/500x700/6495ED/000000?text=Image+5', caption: 'A striking architectural marvel from ancient times, showcasing intricate designs and historical grandeur.' },
+     //   { type: 'video', src: '', caption: 'For Bigger Blazes from Archive.org embedded.' }, 
+     //   { type: 'gif', src: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWM0NG51czR1ZmQzZmxoZzUwd293bHNreGFwZWV5Nzdtb3g1MmxrMyZlcD1WcFlfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0Pmc/l0HlC88e2c0e8sFkI/giphy.gif', caption: 'An artistic GIF of flowing abstract patterns, perfect for background visuals or mood setting.' },
+     //   { type: 'image', src: '', caption: 'A peaceful, sprawling landscape at dawn, with mist rising from the fields and distant hills.' },
+      //  { type: 'image', src: '', caption: 'A striking architectural marvel from ancient times, showcasing intricate designs and historical grandeur.' },
         // Changed video to iframe
-        { type: 'video', src: 'https://archive.org/embed/ForBiggerJoyrides', caption: 'For Bigger Joyrides from Archive.org embedded.' }, 
+      //  { type: 'video', src: '', caption: 'For Bigger Joyrides from Archive.org embedded.' }, 
     ];
 
     let currentFilter = 'all';
